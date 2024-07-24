@@ -121,13 +121,13 @@ theorem MunkresCh1Ex2PartG {U} (A B C : Set U) : A ∩ (B \ C) = (A ∩ B) \ (A 
 --   C = ∅
 -- then we have A ∪ (B \ C) = {x} and
 -- (A ∪ B) \ (A ∪ C) = ∅.
-theorem MunkresCh1Ex2PargH {U} [Inhabited U] : ∃ A B C : Set U, ¬(A ∪ (B \ C) = (A ∪ B) \ (A ∪ C)) := by
+theorem MunkresCh1Ex2PartH {U} [Inhabited U] : ∃ A B C : Set U, ¬(A ∪ (B \ C) = (A ∪ B) \ (A ∪ C)) := by
   use {default}, {}, {}
   simp
 
 -- However, the statement in part H becomes true when the equation is
 -- reversed and = is replaced by ⊆.
-theorem MunkresCh1Ex2PargH2 {U} (A B C : Set U) : (A ∪ B) \ (A ∪ C) ⊆ A ∪ (B \ C) := by
+theorem MunkresCh1Ex2PartH2 {U} (A B C : Set U) : (A ∪ B) \ (A ∪ C) ⊆ A ∪ (B \ C) := by
   intro x
   simp
   intro xabc xac
