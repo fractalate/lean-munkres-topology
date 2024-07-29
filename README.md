@@ -8,3 +8,4 @@ Hello! Welcome to my self study resources for [Munkres Topology, 2nd Edition](ht
   - [Exercise 1](./Chapter01/Exercise01.lean)
   - [Exercise 2](./Chapter01/Exercise02.lean) (WIP)
   - [Exercise 3](./Chapter01/Exercise03.lean)
+  - [Exercise 4](./Chapter01/Exercise04.lean)
