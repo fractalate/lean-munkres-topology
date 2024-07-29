@@ -79,14 +79,7 @@ theorem MunkresCh1Ex3PartB2 : ∃ x : ℝ, ¬(x^2 - x ≤ 0 → x ≤ 0) := by
 
 -- The converse is not true. If x = -1/2, then x^2 - x = 3/4, but ¬(x > 0).
 theorem MunkresCh1Ex3PartB3 : ∃ x : ℝ, ¬(x^2 - x > 0 → x > 0) := by
-  use -0.5
+  use -1/2
   simp
   ring
-  constructor
-
-  refine div_pos ?h.left.ha ?h.left.hb
-  exact three_pos
-  exact four_pos
-
-  refine one_div_nonneg.mpr ?h.right.a
-  exact zero_le_two
+  linarith
