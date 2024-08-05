@@ -32,10 +32,21 @@ theorem MunkresCh1Ex5PartA2 {U} [h : Nontrivial U] (x : U)
     : ∃ AA : Set (Set U), ¬(∃ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A) := by
   sorry
 
--- Unsure whether this is true.
-theorem MunkresCh1Ex5PartB {U} (x : U) (AA : Set (Set U))
-    : ∀ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A := by
-  sorry
+-- The statement
+--   ∀ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A
+-- is not generally true. If AA = {{1}, {2}}, then ⋃₀ AA = {1, 2} and
+-- {1, 2} is not a subset of {1} nor {2}.
+-- The statement can also be written
+--   ∀ A ∈ AA, ⋃₀ AA ⊆ A
+-- which we do here.
+theorem MunkresCh1Ex5PartB {U} [h : Nontrivial U]
+    : ∃ AA : Set (Set U), ¬(∀ A ∈ AA, ⋃₀ AA ⊆ A) := by
+  obtain ⟨a, ⟨b, anb⟩⟩ := h
+  use {{a}, {b}}
+  simp
+  push_neg
+  intro
+  assumption
 
 -- Unsure whether this is true.
 theorem MunkresCh1Ex5PartC {U} (x : U) (AA : Set (Set U))
