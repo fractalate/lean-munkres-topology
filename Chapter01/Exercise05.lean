@@ -48,12 +48,29 @@ theorem MunkresCh1Ex5PartB {U} [h : Nontrivial U]
   intro
   assumption
 
--- Unsure whether this is true.
-theorem MunkresCh1Ex5PartC {U} (x : U) (AA : Set (Set U))
-    : ∃ A ∈ AA, x ∈ ⋂₀ AA → x ∈ A := by
-  sorry
+-- The statement
+--   ∃ A ∈ AA, x ∈ ⋂₀ AA → x ∈ A
+-- is true when AA is nonempty. When AA is empty, the statement is not true
+-- since no A ∈ AA exists. We work with the equivalent statement for the case
+-- where AA is non-empty.
+--   ∃ A ∈ AA, ⋂₀ AA ⊆ A.
+theorem MunkresCh1Ex5PartC {U} (AA : Set (Set U)) [h : Nonempty AA]
+    : ∃ A ∈ AA, ⋂₀ AA ⊆ A := by
+  obtain ⟨A, h2⟩ := h
+  use A
+  constructor
+  assumption
+  intro x xNAA
+  apply xNAA at h2
+  assumption
 
--- Unsure whether this is true.
-theorem MunkresCh1Ex5PartD {U} (x : U) (AA : Set (Set U))
-    : ∃ A ∈ AA, x ∈ ⋂₀ AA → x ∈ A := by
-  sorry
+-- The statement
+--   ∀ A ∈ AA, x ∈ ⋂₀ AA → x ∈ A
+-- is true. We work with the equivalent statement
+--   ∀ A ∈ AA, ⋂₀ AA ⊆ A.
+theorem MunkresCh1Ex5PartD {U} (AA : Set (Set U))
+    : ∀ A ∈ AA, ⋂₀ AA ⊆ A := by
+  intro A AAA
+  intro x xNAA
+  apply xNAA at AAA
+  assumption
