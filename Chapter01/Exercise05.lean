@@ -16,7 +16,7 @@ open Finset
 -- The statement can also be written
 --   ∃ A ∈ AA, ⋃₀ AA ⊆ A
 -- which we do here.
-theorem MunkresCh1Ex5PartA {U} [h : Nontrivial U]
+theorem MunkresCh1Ex5PartA1 {U} [h : Nontrivial U]
     : ∃ AA : Set (Set U), ¬(∃ A ∈ AA, ⋃₀ AA ⊆ A) := by
   obtain ⟨a, ⟨b, anb⟩⟩ := h
   use {{a}, {b}}
@@ -26,6 +26,18 @@ theorem MunkresCh1Ex5PartA {U} [h : Nontrivial U]
   rw [@ne_comm]
   assumption
   assumption
+
+-- This statement
+--   ∃ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A
+-- has the converse
+--   ∃ A ∈ AA, x ∈ A → x ∈ ⋃₀ AA
+-- which is not generally true. If AA is empty, then there is no such A to
+-- satisfy the statement. We work with an equivalent statement
+--   ∃ A ∈ AA, A ⊆ ⋃₀ AA
+theorem MunkresCh1Ex5PartA2 {U} (AA : Set (Set U))
+    : ∃ A ∈ AA, A ⊆ ⋃₀ AA := by
+  sorry
+
 
 -- The statement
 --   ∀ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A
