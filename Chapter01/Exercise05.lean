@@ -5,6 +5,10 @@ import Mathlib.Data.Set.Subset
 open Finset
 
 
+-- Note for future attempts: I'd like to express the statements in the original
+-- element-based notation used in the book, e.g., ∃ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A.
+
+
 -- This statement
 --   ∃ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A
 -- is not generally true. If AA = {{1}, {2}}, then ⋃₀ AA = {1, 2} and
@@ -22,15 +26,6 @@ theorem MunkresCh1Ex5PartA {U} [h : Nontrivial U]
   rw [@ne_comm]
   assumption
   assumption
-
--- TODO: This is tricky, but this is the form I'd like to prove for part A.
--- The (x : U) needed to make the expression x ∈ ⋃₀ AA → x ∈ A work
--- syntactically means that x is some pre-existing element that must be
--- contended with during the proof. Is there some way to create the x where
--- it's needed, instead of as a precondition to the theorem?
-theorem MunkresCh1Ex5PartA2 {U} [h : Nontrivial U] (x : U)
-    : ∃ AA : Set (Set U), ¬(∃ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A) := by
-  sorry
 
 -- The statement
 --   ∀ A ∈ AA, x ∈ ⋃₀ AA → x ∈ A
