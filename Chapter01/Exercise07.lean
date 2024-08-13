@@ -29,7 +29,29 @@ theorem MunkresCh1Ex7PartB {U} (A B C : Set U)
   ext x
   simp
 
--- I'm unsure whether this is expressed correctly.
+-- Set complement isn't one of the allowed symbols... how do I do similar
+-- with A, B, C, ∪, ∩, and \?
 theorem MunkresCh1Ex7PartC {U} (A B C : Set U)
-    : {x : U | x ∈ A ∧ (x ∈ B → x ∈ C)} = A ∩ (C \ B ∪ C) := by
-  sorry
+    : {x : U | x ∈ A ∧ (x ∈ B → x ∈ C)} = A ∩ (C ∪ Bᶜ) := by
+  ext x
+  apply Iff.intro
+  simp
+  intro h
+  intro h2
+  constructor
+  assumption
+  by_cases h3 : x ∈ B
+  apply h2 at h3
+  exact Or.inl h3
+  exact Or.inr h3
+
+  intro h
+  simp at h
+  simp
+  obtain ⟨a, bc⟩ := h
+  constructor
+  assumption
+  intro h2
+  obtain h3 | h3 := bc
+  assumption
+  contradiction
