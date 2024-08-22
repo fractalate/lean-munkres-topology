@@ -12,3 +12,4 @@ Hello! Welcome to my self study resources for [Munkres Topology, 2nd Edition](ht
   - [Exercise 5](./Chapter01/Exercise05.lean)
   - [Exercise 6](./Chapter01/Exercise06.lean)
   - [Exercise 7](./Chapter01/Exercise07.lean)
+  - [Exercise 8](./Chapter01/Exercise08.lean)
